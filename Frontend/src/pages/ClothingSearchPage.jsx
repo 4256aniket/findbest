@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 import ClothingCard from "../components/ClothingCard.jsx";
+import { API } from "../backend.js";
 
 const ClothingSearchPage = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  console.log(`${API}/clothing/${searchInput}`);
 
   const handleSearch = async () => {
     try {
       console.log(searchInput);
-      const response = await axios.get(
-        ` https://backend-server-zeta.vercel.app/api/clothing/${searchInput}`
-      );
+      const response = await axios.get(` ${API}/clothing/${searchInput}`);
       setSearchResults(response.data);
       console.log(response.data);
     } catch (error) {
@@ -21,7 +21,9 @@ const ClothingSearchPage = () => {
 
   return (
     <div className="min-h-[100vh] bg-pink-100 text-center">
-      <h1 className="text-5xl font-bold pt-20 pb-5 text-pink-600">Clothing Search</h1>
+      <h1 className="text-5xl font-bold pt-20 pb-5 text-pink-600">
+        Clothing Search
+      </h1>
       <input
         type="text"
         value={searchInput}

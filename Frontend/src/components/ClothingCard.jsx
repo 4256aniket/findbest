@@ -63,7 +63,7 @@ const ClothingCard = ({
           </a>
         </div>
       </div>
-      <div className="font-bold pt-2 text-lg text-sky-900">grocerys from {scrapFrom}</div>
+      <div className="font-bold pt-2 text-lg text-sky-900">Clothing from {scrapFrom}</div>
     </div>
   );
 };

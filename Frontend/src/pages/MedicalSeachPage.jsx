@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import MedicineCard from "../components/MedicineCard.jsx";
+import { API } from "../backend.js";
 
 const MedicalSeachPage = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -10,7 +11,7 @@ const MedicalSeachPage = () => {
     try {
       console.log(searchInput);
       const response = await axios.get(
-        ` https://backend-server-zeta.vercel.app/api/medicine/${searchInput}`
+        ` ${API}/medicine/${searchInput}`
       );
       setSearchResults(response.data);
       console.log(response.data);
