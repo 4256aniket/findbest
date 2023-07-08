@@ -12,7 +12,7 @@ const puppeteer = require("puppeteer");
 const getClothesMyntra = async (URL) => {
   try {
     let data = [];
-    const browser = await puppeteer.launch({ headless: "new" });
+    const browser = await puppeteer.launch({headless: false});
     const page = await browser.newPage();
 
     await page.goto(URL, { waitUntil: "domcontentloaded" });
@@ -20,7 +20,7 @@ const getClothesMyntra = async (URL) => {
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36";
     await page.setUserAgent(ua);
 
-    // await page.setViewport({ width: 1080, height: 1024 });
+    await page.setViewport({ width: 1080, height: 1024 });
     await page.waitForSelector(".product-base");
     const elements = await page.$$(".product-base");
     let minLength = 6;
