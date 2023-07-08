@@ -8,11 +8,15 @@ const puppeteer = require("puppeteer");
 // const AdblockerPlugin = require("puppeteer-extra-plugin-adblocker");
 // puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
 
-
 const getClothesMyntra = async (URL) => {
   try {
     let data = [];
-    const browser = await puppeteer.launch({headless: false});
+    const browser = await puppeteer.launch({
+      headless: false,
+      args: args,
+      ignoreDefaultArgs: ["--disable-extensions"],
+      executablePath: "/usr/bin/google-chrome",
+    });
     const page = await browser.newPage();
 
     await page.goto(URL, { waitUntil: "domcontentloaded" });
@@ -72,7 +76,15 @@ const getClothesMyntra = async (URL) => {
       );
       const discount = `${disct}% Off`;
       const scrapFrom = "Myntra";
-      data.push({ link, image, title, price, discountPrice, discount, scrapFrom });
+      data.push({
+        link,
+        image,
+        title,
+        price,
+        discountPrice,
+        discount,
+        scrapFrom,
+      });
     }
 
     await browser.close();
