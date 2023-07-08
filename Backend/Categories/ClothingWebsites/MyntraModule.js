@@ -1,12 +1,12 @@
-const puppeteer = require("puppeteer-extra");
+const puppeteer = require("puppeteer");
 
 // Add stealth plugin and use defaults (all tricks to hide puppeteer usage)
-const StealthPlugin = require("puppeteer-extra-plugin-stealth");
-puppeteer.use(StealthPlugin());
+// const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+// puppeteer.use(StealthPlugin());
 
-// Add adblocker plugin to block all ads and trackers (saves bandwidth)
-const AdblockerPlugin = require("puppeteer-extra-plugin-adblocker");
-puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
+// // Add adblocker plugin to block all ads and trackers (saves bandwidth)
+// const AdblockerPlugin = require("puppeteer-extra-plugin-adblocker");
+// puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
 
 
 const getClothesMyntra = async (URL) => {
